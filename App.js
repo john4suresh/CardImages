@@ -1,9 +1,17 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { Header } from "./components/Header";
 import { ListImageContainer } from "./components/ListImageContainer";
 
+const window = Dimensions.get("window");
+const screen = Dimensions.get("screen");
+
 export default function App() {
+  const [dimensions, setDimensions] = useState({ window, screen });
+
+  useEffect(() => {
+    console.log(dimensions);
+  }, []);
   return (
     <View style={styles.container}>
       <Header />

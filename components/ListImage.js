@@ -1,12 +1,18 @@
-import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
+
+const window = Dimensions.get("window");
+const screen = Dimensions.get("screen");
 
 export const ListImage = ({ title, url, time }) => {
+  const [dimensions, setDimensions] = useState({ window, screen });
+
+  const { width } = window;
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          style={styles.tinyLogo}
+          style={imageStyles(width).Imagewidth}
           source={{
             uri: url,
           }}
@@ -67,3 +73,11 @@ const styles = StyleSheet.create({
     height: 25,
   },
 });
+
+const imageStyles = (size) =>
+  StyleSheet.create({
+    Imagewidth: {
+      width: size / 5,
+      height: size / 5,
+    },
+  });

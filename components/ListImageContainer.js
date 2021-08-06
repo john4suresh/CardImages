@@ -14,7 +14,7 @@ export const ListImageContainer = (props) => {
       <FlatList
         data={imageList}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
