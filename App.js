@@ -1,28 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import React from "react";
+import { SafeAreaView, StatusBar } from "react-native";
 import { Header } from "./components/Header";
 import { ListImageContainer } from "./components/ListImageContainer";
+import styled from "styled-components/native";
 
-const window = Dimensions.get("window");
-const screen = Dimensions.get("screen");
+const SafeAreaContainer = styled(SafeAreaView)`
+  flex: 1;
+  margin-top: ${StatusBar.currentHeight}px;
+`;
 
 export default function App() {
-  const [dimensions, setDimensions] = useState({ window, screen });
-
-  useEffect(() => {
-    console.log(dimensions);
-  }, []);
   return (
-    <View style={styles.container}>
+    <SafeAreaContainer>
       <Header />
       <ListImageContainer />
-    </View>
+    </SafeAreaContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-  },
-});
